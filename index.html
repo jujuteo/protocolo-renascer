@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocolo Renascer — Juliana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600;700&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--pink-hot:#e8538a;--pink-mid:#d4477a;--lilac:#b47fc4;--lilac-soft:#d4b0e0;--sky:#d8e8f5;--mist:#edf3fa;--blush:#f4ddd8;--rose-pale:#f0c8c0;--slate-blue:#8fa8c8;--soft-blue:#b3c8e0;--deep:#4a5f7a;--text:#3a4858;--text-light:#6a7e92;--white:#fdfbfa}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--mist);color:var(--text);overflow-x:hidden}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 110px;background:linear-gradient(155deg,#dce9f6 0%,#eef4fc 30%,#f8edf0 65%,#f4ddd8 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 55% at 50% 28%,rgba(255,255,255,.88) 0%,transparent 68%),radial-gradient(ellipse 35% 35% at 82% 78%,rgba(232,83,138,.08) 0%,transparent 55%),radial-gradient(ellipse 28% 38% at 8% 62%,rgba(179,200,224,.22) 0%,transparent 55%)}
+.orb{position:absolute;border-radius:50%;filter:blur(65px);pointer-events:none;animation:floatOrb 9s ease-in-out infinite}
+.orb-1{width:420px;height:420px;top:-110px;left:-90px;background:rgba(179,200,224,.22);animation-delay:0s}
+.orb-2{width:300px;height:300px;top:18%;right:-70px;background:rgba(232,83,138,.10);animation-delay:2.5s}
+.orb-3{width:260px;height:260px;bottom:8%;left:4%;background:rgba(180,127,196,.12);animation-delay:5s}
+@keyframes floatOrb{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+.butterfly{position:absolute;top:18%;left:5%;width:120px;opacity:.38;pointer-events:none;animation:bfloat 7s ease-in-out infinite;filter:drop-shadow(0 4px 12px rgba(180,60,220,.15))}
+@media(max-width:600px){.butterfly{width:72px;top:11%;left:3%}}
+@keyframes bfloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-18px) rotate(4deg)}}
+.birds{position:absolute;top:38%;right:7%;font-size:13px;letter-spacing:5px;color:var(--slate-blue);opacity:.4;animation:bdrift 14s linear infinite}
+@keyframes bdrift{0%{transform:translateX(0);opacity:.4}50%{opacity:.7}100%{transform:translateX(44px);opacity:.4}}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.55);border:1px solid rgba(232,83,138,.22);color:var(--pink-hot);font-weight:600;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;padding:8px 22px;border-radius:50px;margin-bottom:28px;backdrop-filter:blur(10px);animation:fadeUp .8s ease both}
+.hero-pre{font-family:'Alkatra',cursive;font-weight:400;font-size:clamp(1.1rem,2.8vw,1.65rem);color:var(--deep);letter-spacing:.2em;text-transform:uppercase;margin-bottom:2px;opacity:.72;animation:fadeUp .85s .05s ease both}
+.hero-title{font-family:'Alkatra',cursive;font-weight:700;font-size:clamp(4rem,13vw,9rem);line-height:.95;color:var(--pink-hot);letter-spacing:-.01em;margin-bottom:10px;text-shadow:0 4px 28px rgba(232,83,138,.2),0 1px 0 rgba(255,255,255,.55);animation:fadeUp .9s .1s ease both}
+.hero-tagline{font-family:'Alkatra',cursive;font-weight:500;font-size:clamp(1rem,2.5vw,1.4rem);color:var(--lilac);font-style:italic;line-height:1.45;margin-bottom:22px;animation:fadeUp .95s .15s ease both}
+.divider-flower{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px auto 26px;animation:fadeUp 1s .2s ease both}
+.divider-flower::before,.divider-flower::after{content:'';height:1px;width:80px;background:linear-gradient(90deg,transparent,rgba(232,83,138,.35))}
+.divider-flower::after{background:linear-gradient(90deg,rgba(232,83,138,.35),transparent)}
+.divider-flower span{font-size:1rem;opacity:.72}
+.hero-subtitle{font-weight:300;font-size:clamp(.95rem,2vw,1.1rem);line-height:1.75;color:var(--text-light);max-width:600px;margin:0 auto 44px;animation:fadeUp 1.05s .25s ease both}
+.hero-cta{animation:fadeUp 1.1s .35s ease both}
+.btn-primary{display:inline-block;background:linear-gradient(135deg,var(--pink-hot) 0%,var(--pink-mid) 100%);color:#fff;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:18px 54px;border-radius:60px;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(232,83,138,.38),0 2px 8px rgba(232,83,138,.18);transition:all .35s ease;position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18) 0%,transparent 55%);border-radius:inherit}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(232,83,138,.5),0 4px 12px rgba(232,83,138,.25)}
+.hero-guarantee{margin-top:18px;font-size:.78rem;color:var(--text-light);letter-spacing:.05em;animation:fadeUp 1.2s .45s ease both}
+.hero-hook{max-width:620px;margin:0 auto 44px;display:flex;flex-direction:column;gap:20px;animation:fadeUp 1.05s .25s ease both}
+.hook-statement{font-size:clamp(1rem,2vw,1.12rem);line-height:1.75;font-weight:700;color:var(--text);text-align:center}
+.hook-statement em{font-style:normal;font-weight:700;color:var(--deep)}
+.hook-question{padding:8px 0;position:relative;text-align:center}
+.hook-question::before{content:'';display:block;width:40px;height:2px;background:linear-gradient(90deg,transparent,var(--pink-hot),transparent);margin:0 auto 18px}
+.hook-question-inner{font-family:'Alkatra',cursive;font-size:clamp(1.1rem,2.4vw,1.45rem);line-height:1.5;color:var(--deep);font-weight:600;display:block;position:relative;z-index:1}
+.hook-question-inner strong{font-weight:700;color:var(--pink-hot)}
+.scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;animation:fadeUp 1.4s .65s ease both}
+.scroll-hint span{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--slate-blue)}
+.scroll-hint .arrow{width:1px;height:40px;background:linear-gradient(to bottom,var(--pink-hot),transparent);animation:aPulse 2s ease-in-out infinite}
+@keyframes aPulse{0%,100%{opacity:.4}50%{opacity:.9}}
+section{position:relative}
+.section-inner{max-width:870px;margin:0 auto;padding:88px 24px}
+.section-label{font-size:.67rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--pink-hot);margin-bottom:14px;display:block}
+.section-title{font-family:'Alkatra',cursive;font-weight:600;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.18;color:var(--deep);margin-bottom:28px}
+.section-title em{font-style:italic;color:var(--pink-hot)}
+.pain-section{background:var(--white)}
+.pain-section .section-inner{text-align:center}
+.pain-paragraphs{max-width:640px;margin:0 auto}
+.pain-paragraphs p{font-size:clamp(1rem,2vw,1.08rem);line-height:1.85;font-weight:300;color:var(--text);margin-bottom:20px}
+.pain-paragraphs p strong{font-weight:600;color:var(--deep)}
+.highlight-box{background:linear-gradient(135deg,rgba(179,200,224,.1) 0%,rgba(232,83,138,.07) 100%);border-left:3px solid var(--pink-hot);border-radius:0 18px 18px 0;padding:26px 32px;margin:40px 0;text-align:left}
+.highlight-box p{font-family:'Alkatra',cursive;font-size:clamp(1.2rem,2.4vw,1.6rem);font-weight:500;line-height:1.5;color:var(--deep);margin:0}
+.inside-section{background:linear-gradient(158deg,var(--sky) 0%,var(--mist) 50%,var(--blush) 100%)}
+.inside-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+@media(max-width:640px){.inside-grid{grid-template-columns:1fr}}
+.inside-item{background:rgba(255,255,255,.68);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.92);border-radius:20px;padding:22px 26px;display:flex;align-items:flex-start;gap:15px;transition:transform .3s ease,box-shadow .3s ease}
+.inside-item:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(232,83,138,.1)}
+.inside-check{flex-shrink:0;width:30px;height:30px;background:linear-gradient(135deg,var(--pink-hot),var(--lilac));border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.8rem;margin-top:2px;font-weight:700}
+.inside-item p{font-size:.9rem;line-height:1.65;color:var(--text);font-weight:300}
+.inside-item p strong{font-weight:600;color:var(--deep);display:block;margin-bottom:3px}
+.bonus-section{background:var(--white)}
+.bonus-title-wrap{text-align:center;margin-bottom:52px}
+.bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.bonus-card{background:linear-gradient(145deg,rgba(232,83,138,.05) 0%,rgba(180,127,196,.08) 100%);border:1px solid rgba(232,83,138,.18);border-radius:24px;padding:32px 22px;text-align:center;position:relative;overflow:hidden;transition:transform .3s ease}
+.bonus-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pink-hot),var(--lilac));border-radius:24px 24px 0 0}
+.bonus-card:hover{transform:translateY(-6px)}
+.bonus-num{font-family:'Alkatra',cursive;font-size:2.6rem;font-weight:700;color:rgba(232,83,138,.15);line-height:1;margin-bottom:6px}
+.bonus-icon{font-size:1.9rem;margin-bottom:10px;display:block}
+.bonus-card h3{font-weight:600;font-size:.87rem;letter-spacing:.02em;color:var(--deep);line-height:1.55}
+.forwhom-section{background:linear-gradient(158deg,var(--blush) 0%,var(--mist) 60%,var(--sky) 100%)}
+.forwhom-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:48px}
+@media(max-width:720px){.forwhom-cards{grid-template-columns:1fr}}
+.forwhom-card{background:rgba(255,255,255,.72);backdrop-filter:blur(10px);border-radius:24px;padding:36px 26px;border:1px solid rgba(255,255,255,.95);transition:transform .3s ease}
+.forwhom-card:hover{transform:translateY(-4px)}
+.forwhom-card .icon{font-size:2.1rem;margin-bottom:14px;display:block}
+.forwhom-card p{font-size:.94rem;line-height:1.78;color:var(--text);font-weight:300}
+.why-section{background:var(--white)}
+.why-inner{max-width:680px;margin:0 auto;text-align:center;padding:90px 24px}
+.why-inner p{font-size:clamp(1rem,2vw,1.08rem);line-height:1.88;font-weight:300;color:var(--text);margin-bottom:18px}
+.why-quote{font-family:'Alkatra',cursive;font-size:clamp(1.3rem,3vw,1.95rem);font-weight:500;color:var(--deep);line-height:1.4;margin:40px 0;padding:0 16px}
+.why-quote em{color:var(--deep);font-style:italic}
+.mantra-section{background:linear-gradient(135deg,rgba(232,83,138,.06) 0%,rgba(180,127,196,.06) 100%)}
+.mantra-inner{max-width:600px;margin:0 auto;padding:72px 24px;text-align:center}
+.mantra-text{font-family:'Alkatra',cursive;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:500;font-style:italic;line-height:1.55;color:var(--pink-hot)}
+.mantra-text::before{content:'\201C'}.mantra-text::after{content:'\201D'}
+.author-section{background:linear-gradient(158deg,var(--sky) 0%,var(--mist) 40%,var(--blush) 100%);overflow:hidden}
+.author-header{text-align:center;margin-bottom:52px}
+.author-name-bg{font-family:'Alkatra',cursive;font-size:clamp(4rem,12vw,8rem);font-weight:700;color:var(--pink-hot);opacity:.1;line-height:1;margin-bottom:-28px;user-select:none}
+.author-label-real{position:relative;z-index:1}
+.carousel-wrapper{position:relative;overflow:hidden}
+.carousel-track{display:flex;transition:transform .58s cubic-bezier(.25,.46,.45,.94)}
+.carousel-slide{min-width:100%;padding:0 24px}
+.story-card{background:rgba(255,255,255,.74);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.96);border-radius:28px;padding:48px 52px;max-width:760px;margin:0 auto;position:relative}
+@media(max-width:640px){.story-card{padding:34px 26px}}
+.story-card .q-mark{font-family:'Alkatra',cursive;font-size:5rem;font-weight:700;color:var(--pink-hot);opacity:.15;line-height:.5;position:absolute;top:28px;left:32px}
+.story-card p{font-size:clamp(.95rem,1.8vw,1.04rem);line-height:1.9;font-weight:300;color:var(--text);position:relative;z-index:1}
+.story-card p+p{margin-top:16px}
+.story-card p strong{font-weight:700;color:var(--deep)}
+.carousel-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:38px}
+.carousel-btn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(232,83,138,.28);background:rgba(255,255,255,.72);backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--deep);font-size:1rem;transition:all .22s ease}
+.carousel-btn:hover{background:rgba(255,255,255,.95);border-color:var(--pink-hot);color:var(--pink-hot);transform:scale(1.08)}
+.carousel-dots{display:flex;gap:8px;align-items:center}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--soft-blue);opacity:.35;cursor:pointer;transition:all .3s ease}
+.dot.active{opacity:1;background:var(--pink-hot);transform:scale(1.35)}
+.slide-counter{font-size:.73rem;color:var(--text-light);letter-spacing:.1em;min-width:46px;text-align:center}
+.author-sign{text-align:center;margin-top:46px;font-family:'Alkatra',cursive;font-size:1.35rem;font-weight:500;color:var(--pink-hot);opacity:.75}
+.cta-section{background:linear-gradient(158deg,var(--deep) 0%,#3a5570 60%,#4a6a80 100%);position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 50% 0%,rgba(232,83,138,.14) 0%,transparent 60%),radial-gradient(ellipse 38% 38% at 100% 100%,rgba(180,127,196,.12) 0%,transparent 50%)}
+.cta-inner{position:relative;z-index:1;text-align:center;padding:100px 24px;max-width:720px;margin:0 auto}
+.cta-inner .section-label{color:rgba(232,83,138,.7)}
+.cta-inner .section-title{color:rgba(255,255,255,.95);font-size:clamp(2rem,5vw,3.4rem)}
+.cta-inner .section-title em{color:var(--rose-pale)}
+.cta-inner p{color:rgba(255,255,255,.62);font-size:1rem;line-height:1.78;font-weight:300;margin:22px auto 42px;max-width:520px}
+.btn-cta-final{display:inline-block;background:linear-gradient(135deg,var(--pink-hot) 0%,#c03470 100%);color:#fff;font-weight:700;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:20px 62px;border-radius:60px;border:none;cursor:pointer;box-shadow:0 8px 40px rgba(232,83,138,.4),0 2px 12px rgba(0,0,0,.2);transition:all .35s ease}
+.btn-cta-final:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(232,83,138,.52),0 4px 16px rgba(0,0,0,.25)}
+.guarantee-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:34px;flex-wrap:wrap}
+.guarantee-chip{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:50px;padding:8px 18px;font-size:.77rem;color:rgba(255,255,255,.68);letter-spacing:.04em;display:flex;align-items:center;gap:7px}
+footer{background:#263545;padding:30px 24px;text-align:center}
+footer p{font-size:.76rem;color:rgba(255,255,255,.32);letter-spacing:.04em;line-height:1.9}
+.soft-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(232,83,138,.18),rgba(180,127,196,.18),transparent)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.stagger.visible>*:nth-child(1){opacity:1;transform:none;transition-delay:0s}
+.stagger.visible>*:nth-child(2){opacity:1;transform:none;transition-delay:.07s}
+.stagger.visible>*:nth-child(3){opacity:1;transform:none;transition-delay:.14s}
+.stagger.visible>*:nth-child(4){opacity:1;transform:none;transition-delay:.21s}
+.stagger.visible>*:nth-child(5){opacity:1;transform:none;transition-delay:.28s}
+.stagger.visible>*:nth-child(6){opacity:1;transform:none;transition-delay:.35s}
+.stagger.visible>*:nth-child(7){opacity:1;transform:none;transition-delay:.42s}
+.stagger.visible>*:nth-child(8){opacity:1;transform:none;transition-delay:.49s}
+.stagger.visible>*:nth-child(9){opacity:1;transform:none;transition-delay:.56s}
+@media(max-width:480px){.btn-primary,.btn-cta-final{width:100%;padding-left:20px;padding-right:20px;text-align:center}}
+</style>
+</head>
+<body>
+<section class="hero">
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+<svg class="butterfly" viewBox="0 0 160 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="wTL" cx="60%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#e8a0f0"/>
+      <stop offset="40%" stop-color="#c060d8"/>
+      <stop offset="75%" stop-color="#8b35b0"/>
+      <stop offset="100%" stop-color="#5a1a80" stop-opacity="0.7"/>
+    </radialGradient>
+    <radialGradient id="wTR" cx="40%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#f0b0f8"/>
+      <stop offset="40%" stop-color="#d070e8"/>
+      <stop offset="75%" stop-color="#9b45c0"/>
+      <stop offset="100%" stop-color="#5a1a80" stop-opacity="0.7"/>
+    </radialGradient>
+    <radialGradient id="wBL" cx="55%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#d890f0"/>
+      <stop offset="50%" stop-color="#a040c8"/>
+      <stop offset="100%" stop-color="#6a20a0" stop-opacity="0.8"/>
+    </radialGradient>
+    <radialGradient id="wBR" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#e8a8f8"/>
+      <stop offset="50%" stop-color="#b050d8"/>
+      <stop offset="100%" stop-color="#6a20a0" stop-opacity="0.8"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- asa superior esquerda -->
+  <path d="M78 58 C70 48 52 28 32 18 C16 10 6 14 4 26 C2 40 14 58 30 68 C46 78 66 76 78 68Z"
+    fill="url(#wTL)" opacity="0.92" filter="url(#glow)"/>
+  <!-- asa superior direita -->
+  <path d="M82 58 C90 48 108 28 128 18 C144 10 154 14 156 26 C158 40 146 58 130 68 C114 78 94 76 82 68Z"
+    fill="url(#wTR)" opacity="0.92" filter="url(#glow)"/>
+  <!-- asa inferior esquerda -->
+  <path d="M76 70 C64 72 42 78 28 92 C16 104 18 118 32 122 C48 126 68 112 76 96 C80 88 80 78 76 70Z"
+    fill="url(#wBL)" opacity="0.88"/>
+  <!-- asa inferior direita -->
+  <path d="M84 70 C96 72 118 78 132 92 C144 104 142 118 128 122 C112 126 92 112 84 96 C80 88 80 78 84 70Z"
+    fill="url(#wBR)" opacity="0.88"/>
+
+  <!-- veias asa superior esquerda -->
+  <path d="M78 62 C68 52 50 36 30 24" stroke="rgba(255,255,255,0.35)" stroke-width="0.8" fill="none"/>
+  <path d="M76 66 C60 62 40 58 20 54" stroke="rgba(255,255,255,0.25)" stroke-width="0.7" fill="none"/>
+  <path d="M77 64 C65 58 50 48 38 36" stroke="rgba(255,255,255,0.2)" stroke-width="0.6" fill="none"/>
+  <!-- veias asa superior direita -->
+  <path d="M82 62 C92 52 110 36 130 24" stroke="rgba(255,255,255,0.35)" stroke-width="0.8" fill="none"/>
+  <path d="M84 66 C100 62 120 58 140 54" stroke="rgba(255,255,255,0.25)" stroke-width="0.7" fill="none"/>
+  <!-- veias asa inferior esquerda -->
+  <path d="M76 72 C64 80 46 92 34 108" stroke="rgba(255,255,255,0.25)" stroke-width="0.7" fill="none"/>
+  <!-- veias asa inferior direita -->
+  <path d="M84 72 C96 80 114 92 126 108" stroke="rgba(255,255,255,0.25)" stroke-width="0.7" fill="none"/>
+
+  <!-- reflexo brilho asa superior esquerda -->
+  <path d="M60 30 C52 36 44 46 42 56" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- reflexo brilho asa superior direita -->
+  <path d="M100 30 C108 36 116 46 118 56" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- manchas decorativas -->
+  <ellipse cx="48" cy="44" rx="7" ry="5" fill="rgba(255,200,255,0.3)" transform="rotate(-20 48 44)"/>
+  <ellipse cx="112" cy="44" rx="7" ry="5" fill="rgba(255,200,255,0.3)" transform="rotate(20 112 44)"/>
+  <ellipse cx="44" cy="96" rx="6" ry="4" fill="rgba(200,100,240,0.25)" transform="rotate(10 44 96)"/>
+  <ellipse cx="116" cy="96" rx="6" ry="4" fill="rgba(200,100,240,0.25)" transform="rotate(-10 116 96)"/>
+
+  <!-- corpo -->
+  <ellipse cx="80" cy="72" rx="4" ry="22" fill="#4a1060" opacity="0.85"/>
+  <ellipse cx="80" cy="52" rx="5" ry="7" fill="#6a2080" opacity="0.9"/>
+  <!-- cabeça -->
+  <circle cx="80" cy="44" r="5" fill="#5a1870" opacity="0.9"/>
+  <!-- antenas -->
+  <path d="M80 40 Q72 24 66 16" stroke="#7a3090" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M80 40 Q88 24 94 16" stroke="#7a3090" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <circle cx="66" cy="16" r="2.5" fill="#c060d8"/>
+  <circle cx="94" cy="16" r="2.5" fill="#c060d8"/>
+</svg>
+<div class="birds">· · · ·</div>
+<div class="hero-content">
+<span class="hero-badge">Guia Completo · Formato Digital</span>
+<p class="hero-pre">Protocolo</p>
+<h1 class="hero-title">Renascer</h1>
+<p class="hero-tagline">O Guia Completo para Viver Além da Fibromialgia</p>
+<div class="divider-flower"><span>🌸</span></div>
+<div class="hero-hook">
+  <p class="hook-statement">A maioria das pessoas com fibromialgia continua piorando… não por falta de esforço, mas por estar <em>focando nas coisas erradas.</em></p>
+  <div class="hook-question">
+    <span class="hook-question-inner">E se o problema da sua fibromialgia não for a doença, mas o <strong>jeito que você está tentando resolver?</strong></span>
+  </div>
+</div>
+<div class="hero-cta"><a href="https://pay.hotmart.com/U105422133K?checkoutMode=10&bid=1776480156350" target="_blank" class="btn-primary">Quero o meu protocolo agora</a></div>
+</div>
+<div class="scroll-hint"><span>descobrir mais</span><div class="arrow"></div></div>
+</section>
+<div class="soft-divider"></div>
+<section class="pain-section">
+<div class="section-inner">
+<span class="section-label reveal">Para quem reconhece isso</span>
+<h2 class="section-title reveal" style="text-align:center;">Você acorda cansada.<br>A dor está lá. E os exames<br><em>continuam dando normal.</em></h2>
+<div class="pain-paragraphs reveal">
+<p>Você já ouviu que é estresse. Que é ansiedade. Que é coisa da sua cabeça. Que você precisa relaxar.</p>
+<p>Enquanto isso, o corpo continua doendo. O cansaço não passa. A névoa mental aparece sem aviso. E você vai para o médico — de novo — e sai de lá com mais uma receita que alivia o sintoma, mas não explica o que está acontecendo com você.</p>
+<div class="highlight-box"><p>Isso tem nome. Isso tem explicação. E existe um protocolo.</p></div>
+<p>A fibromialgia não é frescura. Não é exagero. É uma <strong>disfunção real no sistema nervoso central</strong> — e por isso os exames não mostram nada. A dor é real. O cansaço é real. O fibro-fog é real.</p>
+<p>E quando você finalmente entende o que está acontecendo no seu corpo, tudo muda. Você para de se culpar. Para de aceitar o sofrimento como parte da vida. E começa a agir — com um protocolo pensado para a sua realidade.</p>
+</div>
+</div>
+</section>
+<div class="soft-divider"></div>
+<section class="inside-section">
+<div class="section-inner">
+<span class="section-label reveal">O que você vai encontrar</span>
+<h2 class="section-title reveal">Um guia completo,<br><em>escrito para a sua vida</em></h2>
+<div class="inside-grid stagger">
+<div class="inside-item"><div class="inside-check">✓</div><p><strong>O que é a fibromialgia de verdade</strong>Por que dói, por que os exames não mostram nada e por que o tratamento convencional sozinho não é suficiente</p></div>
+<div class="inside-item"><div class="inside-check">✓</div><p><strong>Seus gatilhos pessoais de crise</strong>Estresse, sono, alimentação, clima e muito mais — aprenda a identificá-los e antecipá-los</p></div>
+<div class="inside-item"><div class="inside-check">✓</div><p><strong>Protocolo completo de sono</strong>O tratamento número um da fibromialgia, detalhado dia a dia</p></div>
+<div class="inside-item"><div class="inside-check">✓</div><p><strong>Alimentação anti-inflamatória</strong>Simples e sem radicalismo — cardápio semanal adaptável à sua rotina</p></div>
+<div class="inside-item"><div class="inside-check">✓</div><p><strong>Movimento leve e progressivo</strong>Do nível iniciante ao intermediário, respeitando o ritmo do seu corpo</p></div>
+<div class="inside-item"><div class="inside-check">✓</div><p><strong>Suplementação de base</strong>Por onde começar e o que observar na sua jornada</p></div>
+<div class="inside-item"><div class="inside-check">✓</div><p><strong>Óleos essenciais como apoio</strong>Sono, ansiedade, dor e humor — uso complementar com propósito</p></div>
+<div class="inside-item"><div class="inside-check">✓</div><p><strong>Manejo da dor nos dias difíceis</strong>Estratégias práticas e humanas para as crises</p></div>
+<div class="inside-item"><div class="inside-check">✓</div><p><strong>Saúde emocional e autoaceitação</strong>Porque a fibromialgia não é só do corpo</p></div>
+</div>
+</div>
+</section>
+<div class="soft-divider"></div>
+<section class="bonus-section">
+<div class="section-inner">
+<div class="bonus-title-wrap">
+<span class="section-label reveal">Incluídos no seu acesso</span>
+<h2 class="section-title reveal">+ 5 Bônus <em>exclusivos</em></h2>
+</div>
+<div class="bonus-grid stagger">
+<div class="bonus-card"><div class="bonus-num">01</div><span class="bonus-icon">🌙</span><h3>Mini Plano de Sono — 7 Dias</h3></div>
+<div class="bonus-card"><div class="bonus-num">02</div><span class="bonus-icon">📋</span><h3>Checklist Visual da Rotina de Sono <small style="font-weight:400;font-size:.8em;display:block;margin-top:4px;">(para imprimir)</small></h3></div>
+<div class="bonus-card"><div class="bonus-num">03</div><span class="bonus-icon">🥗</span><h3>Cardápio Prático Semanal Anti-inflamatório</h3></div>
+<div class="bonus-card"><div class="bonus-num">04</div><span class="bonus-icon">💊</span><h3>Guia Simples de Suplementação</h3></div>
+<div class="bonus-card"><div class="bonus-num">05</div><span class="bonus-icon">🌿</span><h3>Plano de Movimento Leve <small style="font-weight:400;font-size:.8em;display:block;margin-top:4px;">(3 níveis progressivos)</small></h3></div>
+</div>
+</div>
+</section>
+<div class="soft-divider"></div>
+<section class="forwhom-section">
+<div class="section-inner">
+<span class="section-label reveal">Este protocolo é para você</span>
+<h2 class="section-title reveal">Para quem está<br><em>cansada de não ser ouvida</em></h2>
+<div class="forwhom-cards stagger">
+<div class="forwhom-card"><span class="icon">🔍</span><p>Para mulheres que têm fibromialgia — com diagnóstico ou em investigação — e que estão cansadas de buscar respostas em consultórios que olham apenas para os sintomas, sem entender o quadro completo.</p></div>
+<div class="forwhom-card"><span class="icon">💛</span><p>Para quem já tentou de tudo, ouviu que era frescura, e sabe que a dor é real mesmo quando ninguém acredita.</p></div>
+<div class="forwhom-card"><span class="icon">🌱</span><p>Para quem quer um caminho concreto, prático e humano — sem promessas de cura milagrosa, mas com ferramentas reais para viver melhor.</p></div>
+</div>
+</div>
+</section>
+<div class="soft-divider"></div>
+<section class="why-section">
+<div class="why-inner">
+<span class="section-label reveal">Por que este protocolo é diferente</span>
+<div class="reveal"><p>Ele foi criado por quem vive com fibromialgia — não por quem estudou sobre ela de fora. Cada página foi escrita com a experiência de quem conhece a névoa mental, a dor que muda de lugar, o cansaço que não passa e a frustração de ser incompreendida.</p></div>
+<div class="why-quote reveal"><em>"Não é um livro acadêmico.<br>É um guia que fala a sua língua."</em></div>
+<div class="reveal"><p>Aqui não há promessas impossíveis. Há caminhos concretos, linguagem humana e respeito pela sua realidade — porque quem escreveu sabe exatamente como é estar do seu lado.</p></div>
+</div>
+</section>
+<div class="soft-divider"></div>
+<section class="mantra-section">
+<div class="mantra-inner reveal">
+<p class="mantra-text">Meu corpo não está contra mim, ele está pedindo cuidado.</p>
+</div>
+</section>
+<div class="soft-divider"></div>
+<section class="author-section">
+<div class="section-inner">
+<div class="author-header">
+<div class="author-name-bg">Juliana</div>
+<div class="author-label-real">
+<span class="section-label" style="display:inline-block;">Sobre a autora</span>
+<h2 class="section-title">Uma história de <em>coragem e transformação</em></h2>
+</div>
+</div>
+<div class="carousel-wrapper">
+<div class="carousel-track" id="carouselTrack">
+<div class="carousel-slide"><div class="story-card"><span class="q-mark">"</span>
+<p>Eu não descobri a fibromialgia de forma tranquila. Na verdade, eu descobri no meio de um turbilhão.</p>
+<p>Recebi o diagnóstico ainda jovem, sem nunca ter ouvido falar sobre a doença, sem entender o que estava acontecendo com o meu corpo — e já ouvindo, logo de início, que não tinha cura.</p>
+<p>Na mesma fase, eu também estava lidando com hérnias de disco na cervical, que mais tarde exigiram cirurgia. E mesmo com uma cirurgia bem feita, minha qualidade de vida piorou — meu corpo simplesmente não respondeu como deveria.</p>
+</div></div>
+<div class="carousel-slide"><div class="story-card"><span class="q-mark">"</span>
+<p>Foi ali que eu comecei a sentir, de verdade, o que é ter a vida virando de cabeça para baixo.</p>
+<p>Antes disso, eu já convivia com ansiedade generalizada, depressão e crises de pânico. Então, quando a fibromialgia entrou na história, tudo se misturou de uma forma difícil até de explicar.</p>
+<p>Eu me senti perdida. Sem direção. Sem respostas.</p>
+</div></div>
+<div class="carousel-slide"><div class="story-card"><span class="q-mark">"</span>
+<p>Passei por diversos médicos — alguns que nem conheciam a fibromialgia direito. Testei tratamentos, medicações, combinações… e, na maioria das vezes, só piorava.</p>
+<p>A fadiga era absurda. Havia dias em que sair da cama parecia impossível. E junto com a dor física, vinha algo ainda mais pesado: a sensação de inutilidade, de não conseguir trabalhar, de não conseguir ter uma vida normal.</p>
+</div></div>
+<div class="carousel-slide"><div class="story-card"><span class="q-mark">"</span>
+<p>Eu já me senti sem esperança. Já pensei que não fazia sentido continuar. Mas, ao mesmo tempo, eu sempre tive algo muito forte dentro de mim: a necessidade de entender.</p>
+<p>Comecei a estudar, pesquisar, buscar informações, testar caminhos… E, ao longo dos anos, fui percebendo algo importante: a fibromialgia pode não ter cura definitiva, mas é possível melhorar — e muito — quando você entende o seu corpo e trata de forma mais completa.</p>
+</div></div>
+<div class="carousel-slide"><div class="story-card"><span class="q-mark">"</span>
+<p>Não foi rápido. Não foi fácil. Mas foi possível.</p>
+<p>Hoje, eu não tenho uma vida perfeita — ainda existem dias difíceis. Mas eu encontrei um equilíbrio que antes parecia impossível.</p>
+<p>Eu não estou aqui como especialista distante. Eu estou aqui como alguém que vive isso todos os dias. Alguém que já esteve completamente perdida… e que decidiu transformar essa dor em caminho — não só pra si, mas para outras pessoas também.</p>
+<p>Se você chegou até aqui, talvez esteja passando por algo parecido. E se estiver… <strong>você não está sozinha.</strong></p>
+</div></div>
+</div>
+</div>
+<div class="carousel-nav">
+<button class="carousel-btn" onclick="changeSlide(-1)">&#8592;</button>
+<div class="carousel-dots" id="dotsContainer"></div>
+<span class="slide-counter" id="slideCounter">1 / 5</span>
+<button class="carousel-btn" onclick="changeSlide(1)">&#8594;</button>
+</div>
+<p class="author-sign">— Juliana</p>
+</div>
+</section>
+<div class="soft-divider"></div>
+<section class="cta-section" id="comprar">
+<div class="cta-inner">
+<span class="section-label">Comece hoje</span>
+<h2 class="section-title">Chegou a hora de<br><em>viver além da dor</em></h2>
+<p>Acesso imediato após a compra. Leia no celular, tablet ou computador. Se não gostar, devolvemos 100% do valor em até 7 dias — sem perguntas.</p>
+<a href="https://pay.hotmart.com/U105422133K?checkoutMode=10&bid=1776480156350" target="_blank" class="btn-cta-final">Quero o Protocolo Renascer</a>
+<div class="guarantee-row">
+<div class="guarantee-chip"><span>📱</span> Formato digital</div>
+<div class="guarantee-chip"><span>⚡</span> Acesso imediato</div>
+<div class="guarantee-chip"><span>🛡️</span> Garantia de 7 dias</div>
+</div>
+</div>
+</section>
+<footer><p>© 2025 Juliana · Protocolo Renascer<br>Este material é de uso pessoal e não substitui acompanhamento médico profissional.</p></footer>
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal,.stagger').forEach(el=>io.observe(el));
+let cur=0;const tot=5;
+const track=document.getElementById('carouselTrack');
+const counter=document.getElementById('slideCounter');
+const dotsEl=document.getElementById('dotsContainer');
+for(let i=0;i<tot;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);}
+function update(){track.style.transform='translateX(-'+(cur*100)+'%)';counter.textContent=(cur+1)+' / '+tot;document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===cur));}
+function changeSlide(dir){cur=(cur+dir+tot)%tot;update();}
+function goTo(i){cur=i;update();}
+</script>
+</body>
+</html>
